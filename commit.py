@@ -1,0 +1,47 @@
+from selenium import webdriver
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.common.keys import Keys
+import webbrowser
+import time
+
+options = Options()
+options.add_experimental_option("detach", True)
+driver = webdriver.Chrome(options=options) 
+driver.get("<repolink>")
+driver.maximize_window()
+time.sleep(1)
+links = driver.find_element("xpath", "//div[contains(@class, 'position-relative mr-lg-3 d-lg-inline-block')]")
+links.click()
+time.sleep(2)
+usr = driver.find_element("id", "login_field")
+usr.send_keys('<email>')
+usr.send_keys(Keys.RETURN)
+time.sleep(2)
+pwd = driver.find_element("id", "password")
+pwd.send_keys('<password>')
+pwd.send_keys(Keys.RETURN)
+time.sleep(10)
+wait = WebDriverWait(driver, 10)
+add =  wait.until(EC.visibility_of_element_located(("xpath", "//button[@id=':R5b5ab:']")))
+add.click()
+time.sleep(4)
+create = driver.find_element("xpath", "//span[@id= ':r6:--label']")
+create.click()
+time.sleep(9)
+rename = driver.find_element("xpath", "//input[contains(@class, 'UnstyledTextInput-sc-14ypya-0 cDLBls')]")
+rename.send_keys('test')
+rename.send_keys(Keys.RETURN)
+time.sleep(1)
+ok1 = driver.find_element("xpath", "//button[contains(@class, 'types__StyledButton-sc-ws60qy-0 bBAzZg')]")
+ok1.click()
+time.sleep(2)
+ok2 = driver.find_element("xpath", "//button[contains(@class, 'types__StyledButton-sc-ws60qy-0 gFhByl')]")
+ok2.click()
+time.sleep(6)
+test = driver.find_element("xpath", "/html[1]/body[1]/div[1]/div[6]/div[1]/main[1]/turbo-frame[1]/div[1]/div[1]/div[1]/div[2]/div[1]/react-partial[1]/div[1]/div[1]/div[3]/div[1]/table[1]/tbody[1]/tr[5]/td[2]/div[1]/div[1]/h3[1]/div[1]/a[1]")
+test.click()
+# write = driver.find_element("xpath", "//span[contains(@id, 'codemirror-label')]")
+# write.send_keys('ok')
+# write.send_keys(Keys.RETURN)
